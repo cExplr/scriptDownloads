@@ -1,5 +1,4 @@
 #! /bin/bash
-
 echo Checking Operating System
 platform="unknown"
 unamestr="$(uname)"
@@ -8,15 +7,12 @@ if ! [[ "$unamestr" == 'Linux'  ]]; then
 echo This program does not support Anti-Linux Plaatform
 exit 1
 fi
-
 echo "Checking if git, wget gunzip is installed"
-
 if ! [ -x "$(command -v git)" ]; then
   echo 'Error: git is not installed.' >&2
   exit 1
 fi
 echo "Git checked!"
-
 if ! [ -x "$(command -v wget)" ]; then
   echo 'Error: wget is not installed.' >&2
   exit 1
@@ -47,8 +43,15 @@ sleep 0.5
 gunzip php-reverse-shell-1.0.tar.gz
 tar xvf php-reverse-shell-1.0.tar
 echo Done unpacking php reverse shell
-sleep 1
-
-echo 
+sleep 1 
+echo
 echo -e "Installed are:\nLinEnum\nunix-privesc-checker\nphp-reverse-shell\n\n"
-echo "Done for now!"
+echo "Cleaning up"
+sleep 0.4
+echo "Removing unix-privesc-check-1.4.tar"
+rm -rf unix-privesc-check-1.4.tar
+echo removing unix-privesc-check-1.4.tar
+echo "Removing php-reverse-shell-1.0.tar
+rm -rf php-reverse-shell-1.0.tar
+echo Done removing php-reverse-shell-1.0.tar
+echo "Done Installation of dlOnNew!"
