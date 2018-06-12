@@ -1,48 +1,36 @@
 #! /bin/bash
 echo Checking Operating System
-platform="unknown"
-unamestr="$(uname)"
-uname
-if ! [[ "$unamestr" == 'Linux'  ]]; then
-echo This program does not support Anti-Linux Plaatform
-exit 1
-fi
+platform="$(uname)"
+echo "OPERATING SYSTEM : $platform" 
+if ! [[ "$unamestr" == 'Linux'  ]]; then echo This program does not support Anti-Linux Plaatform ; exit 1 ; fi
 echo "Checking if git, wget gunzip is installed"
-if ! [ -x "$(command -v git)" ]; then
-  echo 'Error: git is not installed.' >&2
-  exit 1
-fi
+if ! [ -x "$(command -v git)" ]; then echo 'Error: git is not installed.' >&2 ; exit 1  ;fi
 echo "Git checked!"
-if ! [ -x "$(command -v wget)" ]; then
-  echo 'Error: wget is not installed.' >&2
-  exit 1
-fi
+if ! [ -x "$(command -v wget)" ]; then echo 'Error: wget is not installed.' >&2 ; exit 1 ; fi
 echo "wget found!"
-if ! [ -x "$(command -v gunzip)" ]; then
-  echo 'Error: gunzip is not installed.' >&2
-  exit 1
-fi
+if ! [ -x "$(command -v gunzip)" ]; then ; echo 'Error: gunzip is not installed.' >&2 ; exit 1 ; fi
 echo "gunzip found"
+echo "All needed commands are present"
 sleep 1
-echo Downloading LinEnum
+echo "Downloading LinEnum"
 git clone https://github.com/rebootuser/LinEnum.git
-echo Done
+echo "Done"
 sleep 0.5
-echo Downloading unix-privesc-checker from pentestmonkey
+echo "Downloading unix-privesc-checker from pentestmonkey"
 wget http://pentestmonkey.net/tools/unix-privesc-check/unix-privesc-check-1.4.tar.gz
-echo Downloaded and unpacking
+echo "Downloaded and unpacking"
 sleep 0.5
 gunzip unix-privesc-check-1.4.tar.gz
 tar xvf unix-privesc-check-1.4.tar
-echo Done unpacking
+echo "Done unpacking ..."
 sleep 0.5
-echo Now downloading php reverse shell from pentest monkey
+echo "Now downloading php reverse shell from pentestmonkey"
 wget http://pentestmonkey.net/tools/php-reverse-shell/php-reverse-shell-1.0.tar.gz
-echo unpacking ...
+echo "unpacking ..."
 sleep 0.5
 gunzip php-reverse-shell-1.0.tar.gz
 tar xvf php-reverse-shell-1.0.tar
-echo Done unpacking php reverse shell
+echo "Done unpacking php reverse shell"
 sleep 1 
 echo
 echo -e "Installed are:\nLinEnum\nunix-privesc-checker\nphp-reverse-shell\n\n"
